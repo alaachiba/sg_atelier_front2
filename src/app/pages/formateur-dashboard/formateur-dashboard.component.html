@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+      <!-- MENU LATÉRAL -->
+      <div class="col-md-3 bg-light vh-100 p-3">
+        <h5>Menu</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" (click)="activeTab = 'ateliers'">📋 Mes ateliers</a>
+          </li>
+          <li class="nav-item" *ngIf="selectedAtelierId">
+            <a class="nav-link" (click)="activeTab = 'participants'">👥 Participants</a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- CONTENU PRINCIPAL -->
+      <div class="col-md-9 p-4">
+        <h4 *ngIf="activeTab === 'ateliers'">📋 Mes Ateliers</h4>
+        <ul *ngIf="activeTab === 'ateliers'">
+          <li *ngFor="let atelier of ateliers">
+            <strong>{{ atelier.titre }}</strong> - {{ atelier.date_debut }}
+            <button class="btn btn-sm btn-outline-primary ms-2" (click)="loadParticipants(atelier.id)">Voir participants</button>
+          </li>
+        </ul>
+  
+        <div *ngIf="activeTab === 'participants'">
+          <h4>👥 Participants</h4>
+          <ul>
+            <li *ngFor="let participant of participants">
+              {{ participant.nom }} {{ participant.prenom }} ({{ participant.email }})
+            </li>
+          </ul>
+        </div>
+  
+        <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2>Liste des Ateliers disponibles</h2>
+  
+    <div *ngIf="loading" class="alert alert-info">Chargement des ateliers...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  
+    <div *ngIf="!loading && ateliers.length === 0" class="alert alert-warning">
+      Aucun atelier disponible.
+    </div>
+  
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let atelier of ateliers">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ atelier.titre }}</h5>
+                <p class="card-text">{{ atelier.description || 'Pas de description' }}</p>
+                <p><strong>Date début:</strong> {{ atelier.date_debut | date:'dd/MM/yyyy HH:mm' }}</p>
+                <p><strong>Date fin:</strong> {{ atelier.date_fin | date:'dd/MM/yyyy HH:mm' }}</p>
+                <p><strong>Lieu:</strong> {{ atelier.lieu }}</p>
+                <p><strong>Formateur :</strong> {{ atelier.formateur?.prenom }} {{ atelier.formateur?.nom }}</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

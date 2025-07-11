@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2>Liste des ateliers disponibles</h2>
+
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+    <div class="col" *ngFor="let atelier of ateliers">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ atelier.titre }}</h5>
+          <p class="card-text">{{ atelier.description }}</p>
+
+          <p class="card-text">
+            <strong>Formateur :</strong>
+            {{ atelier.formateur?.prenom }} {{ atelier.formateur?.nom }}
+          </p>
+
+          <p class="card-text">
+            <strong>Dates :</strong>
+            {{ atelier.date_debut }} → {{ atelier.date_fin }}
+          </p>
+
+          <p class="card-text"><strong>Lieu :</strong> {{ atelier.lieu }}</p>
+
+          <!-- Bouton S'inscrire masqué si déjà inscrit -->
+          <button
+            *ngIf="!estInscrit(atelier.id)"
+            class="btn btn-success"
+            (click)="inscrire(atelier.id)"
+          >
+            S'inscrire
+          </button>
+
+          <!-- Message si déjà inscrit -->
+          <span *ngIf="estInscrit(atelier.id)" class="text-success fw-bold">
+            ✔️ Déjà inscrit
+          </span>
+          <button
+            *ngIf="estInscrit(atelier.id)"
+            class="btn btn-danger"
+            (click)="annulerInscription(atelier.id)"
+          >
+            Annuler l'inscription
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
