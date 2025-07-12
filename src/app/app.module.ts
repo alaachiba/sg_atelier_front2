@@ -15,6 +15,7 @@ import { GestionUtilisateursComponent } from './components/gestion-utilisateurs/
 import { GestionAtelierComponent } from './components/admin/gestion-atelier/gestion-atelier.component';
 import { AjouterAtelierComponent } from './components/admin/ajouter-atelier/ajouter-atelier.component';
 import { ListeAteliersComponent } from './components/admin/liste-ateliers/liste-ateliers.component';
+import { ModifierAtelierComponent } from './components/admin/modifier-atelier/modifier-atelier.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ListeAteliersComponent } from './components/admin/liste-ateliers/liste-
     GestionUtilisateursComponent,
     GestionAtelierComponent,
     AjouterAtelierComponent,
-    ListeAteliersComponent
+    ListeAteliersComponent,
+    ModifierAtelierComponent
   ],
   imports: [
     BrowserModule,

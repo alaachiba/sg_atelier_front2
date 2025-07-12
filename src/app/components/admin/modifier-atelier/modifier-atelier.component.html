@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h3>Modifier Atelier</h3>
+  
+    <form [formGroup]="atelierForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label>Titre</label>
+        <input formControlName="titre" class="form-control">
+      </div>
+  
+      <div class="mb-3">
+        <label>Description</label>
+        <textarea formControlName="description" class="form-control"></textarea>
+      </div>
+  
+      <div class="mb-3">
+        <label>Date début</label>
+        <input type="date" formControlName="date_debut" class="form-control">
+      </div>
+  
+      <div class="mb-3">
+        <label>Date fin</label>
+        <input type="date" formControlName="date_fin" class="form-control">
+      </div>
+  
+      <div class="mb-3">
+        <label>Lieu</label>
+        <input formControlName="lieu" class="form-control">
+      </div>
+  
+      <div class="mb-3">
+        <label>Formateur</label>
+        <select formControlName="formateur_id" class="form-control">
+            <option value="" disabled>Choisir un formateur</option>
+            <option *ngFor="let formateur of formateurs" [value]="formateur.id">
+              {{ formateur.nom }} {{ formateur.prenom }}
+            </option>
+          </select>
+      </div>
+  
+      <button class="btn btn-primary" type="submit" [disabled]="atelierForm.invalid">💾 Modifier</button>
+    </form>
+  
+    <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+  </div>
+  

@@ -1,1 +1,37 @@
-<p>liste-ateliers works!</p>
+<div *ngIf="loading">Chargement des ateliers...</div>
+
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<table *ngIf="!loading && !error && ateliers.length > 0" class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Date début</th>
+      <th>Date fin</th>
+      <th>Lieu</th>
+      <th>Formateur</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let atelier of ateliers; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ atelier.titre }}</td>
+      <td>{{ atelier.description || '—' }}</td>
+      <td>{{ atelier.date_debut | date:'shortDate' }}</td>
+      <td>{{ atelier.date_fin | date:'shortDate' }}</td>
+      <td>{{ atelier.lieu }}</td>
+      <td>{{ atelier.formateur?.nom }} {{ atelier.formateur?.prenom }}</td>
+      <td>
+        <button class="btn btn-sm btn-warning me-2" (click)="onEdit(atelier.id)">✏️ Modifier</button>
+        <button class="btn btn-sm btn-danger" (click)="onDelete(atelier.id)">🗑️ Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && !error && ateliers.length === 0">
+  Aucun atelier disponible.
+</div>

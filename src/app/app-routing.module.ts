@@ -6,6 +6,8 @@ import { FormateurDashboardComponent } from './pages/formateur-dashboard/formate
 import { ParticipantDashboardComponent } from './pages/participant-dashboard/participant-dashboard.component';
 import { GestionUtilisateursComponent } from './components/gestion-utilisateurs/gestion-utilisateurs.component';
 import { GestionAtelierComponent } from './components/admin/gestion-atelier/gestion-atelier.component';
+import { ListeAteliersComponent } from './components/admin/liste-ateliers/liste-ateliers.component';
+import { ModifierAtelierComponent } from './components/admin/modifier-atelier/modifier-atelier.component';
 
 const routes: Routes = [
   { path: '', component: AtelierListComponent },
@@ -17,9 +19,10 @@ const routes: Routes = [
     component: AdminDashboardComponent,
     children: [
       { path: 'ateliers/add', component: GestionAtelierComponent },
-      // { path: 'ateliers/list', component: ListeAteliersComponent },
+      { path: 'ateliers/list', component: ListeAteliersComponent },
       { path: 'utilisateurs', component: GestionUtilisateursComponent },
-      { path: '', redirectTo: 'ateliers/list', pathMatch: 'full' }
+      { path: '', redirectTo: 'ateliers/list', pathMatch: 'full' },
+      { path: 'ateliers/edit/:id', component: ModifierAtelierComponent }
     ]
   },
   {

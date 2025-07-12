@@ -18,6 +18,7 @@ export interface Atelier {
   created_at?: string;
   updated_at?: string;
   formateur?: Formateur;
+  formateur_id?: number;
 }
 
 export interface Inscription {
@@ -80,6 +81,15 @@ export class AtelierService {
         headers: { Authorization: `Bearer ${token}` }
       }
     );
+  }
+
+  deleteAtelier(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.delete(`http://localhost:8000/api/ateliers/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
  
 }
