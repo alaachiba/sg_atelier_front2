@@ -8,6 +8,8 @@ import { GestionUtilisateursComponent } from './components/gestion-utilisateurs/
 import { GestionAtelierComponent } from './components/admin/gestion-atelier/gestion-atelier.component';
 import { ListeAteliersComponent } from './components/admin/liste-ateliers/liste-ateliers.component';
 import { ModifierAtelierComponent } from './components/admin/modifier-atelier/modifier-atelier.component';
+import { ModifierUtilisateurComponent } from './components/admin/modifier-utilisateur/modifier-utilisateur.component';
+import { AjouterUtilisateurComponent } from './components/admin/ajouter-utilisateur/ajouter-utilisateur.component';
 
 const routes: Routes = [
   { path: '', component: AtelierListComponent },
@@ -22,7 +24,9 @@ const routes: Routes = [
       { path: 'ateliers/list', component: ListeAteliersComponent },
       { path: 'utilisateurs', component: GestionUtilisateursComponent },
       { path: '', redirectTo: 'ateliers/list', pathMatch: 'full' },
-      { path: 'ateliers/edit/:id', component: ModifierAtelierComponent }
+      { path: 'ateliers/edit/:id', component: ModifierAtelierComponent },
+      { path: 'utilisateurs/edit/:id', component: ModifierUtilisateurComponent },
+      { path: 'utilisateurs/add', component: AjouterUtilisateurComponent },
     ]
   },
   {

@@ -1,1 +1,58 @@
-<p>gestion-utilisateurs works!</p>
+<div class="container mt-4">
+  <h3>👥 Liste des utilisateurs</h3>
+
+  <div class="mb-3">
+    <button class="btn btn-primary" routerLink="/admin/utilisateurs/add">
+      ➕ Ajouter un utilisateur
+    </button>
+  </div>
+
+  <div *ngIf="loading">Chargement des utilisateurs...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <table
+    *ngIf="!loading && utilisateurs.length > 0"
+    class="table table-bordered mt-3"
+  >
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of utilisateurs; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ u.nom }}</td>
+        <td>{{ u.prenom }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.role }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-warning me-2"
+            (click)="modifierUtilisateur(u.id)"
+          >
+            ✏️ Modifier
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="supprimerUtilisateur(u.id)"
+          >
+            🗑 Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    *ngIf="!loading && utilisateurs.length === 0"
+    class="alert alert-info mt-3"
+  >
+    Aucun utilisateur trouvé.
+  </div>
+</div>
