@@ -1,27 +1,65 @@
-# GestionAteliersFrontend
+# 🚀 Gestion Ateliers - Frontend Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+---
 
-## Development server
+## 📄 Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Frontend Angular pour gérer des ateliers de formation avec gestion des utilisateurs (admin, formateurs, participants), authentification via token JWT, gestion complète des ateliers et inscriptions.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ⚙️ Fonctionnalités
 
-## Build
+- 🔐 Authentification JWT (login/logout) avec gestion des rôles
+- 🛠️ Gestion des ateliers (CRUD) par admins et formateurs
+- 👥 Gestion des utilisateurs (CRUD) par admins
+- 📝 Inscription/désinscription aux ateliers par participants
+- 👀 Visualisation des participants à un atelier
+- 👤 Affichage du nom de l’utilisateur connecté dans la barre de navigation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🛠️ Technologies utilisées
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular 16+
+- TypeScript
+- Bootstrap 5
+- RxJS
+- Angular Router
+- HttpClient
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🚀 Installation
 
-## Further help
+```bash
+git clone <URL_DU_DEPOT>
+cd nom-du-projet-frontend
+npm install
+ng serve --open
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+🗂️ Structure
+src/
+└── app/
+    ├── components/
+    │   ├── navbar/
+    │   ├── ateliers/
+    │   ├── utilisateurs/
+    │   └── participants/
+    ├── services/
+    │   ├── auth.service.ts
+    │   ├── atelier.service.ts
+    │   └── utilisateur.service.ts
+    ├── app-routing.module.ts
+    └── app.module.ts
+
+🎯 Usage
+Se connecter via la barre de navigation.
+
+Accéder à la gestion ateliers/utilisateurs selon le rôle.
+
+Ajouter, modifier, supprimer ateliers ou utilisateurs.
+
+Voir la liste des participants pour chaque atelier.
+
