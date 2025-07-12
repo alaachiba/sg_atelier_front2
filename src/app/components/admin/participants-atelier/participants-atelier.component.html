@@ -1,0 +1,25 @@
+<div *ngIf="loading">Chargement des participants...</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<table *ngIf="!loading && !error && participants.length > 0" class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let participant of participants; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ participant.nom }}</td>
+      <td>{{ participant.prenom }}</td>
+      <td>{{ participant.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && !error && participants.length === 0" class="alert alert-info">
+  Aucun participant pour cet atelier.
+</div>

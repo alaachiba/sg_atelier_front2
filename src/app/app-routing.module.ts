@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AtelierListComponent } from './components/atelier-list/atelier-list.component'
+import { AtelierListComponent } from './components/atelier-list/atelier-list.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { FormateurDashboardComponent } from './pages/formateur-dashboard/formateur-dashboard.component';
 import { ParticipantDashboardComponent } from './pages/participant-dashboard/participant-dashboard.component';
@@ -10,6 +10,7 @@ import { ListeAteliersComponent } from './components/admin/liste-ateliers/liste-
 import { ModifierAtelierComponent } from './components/admin/modifier-atelier/modifier-atelier.component';
 import { ModifierUtilisateurComponent } from './components/admin/modifier-utilisateur/modifier-utilisateur.component';
 import { AjouterUtilisateurComponent } from './components/admin/ajouter-utilisateur/ajouter-utilisateur.component';
+import { ParticipantsAtelierComponent } from './components/admin/participants-atelier/participants-atelier.component';
 
 const routes: Routes = [
   { path: '', component: AtelierListComponent },
@@ -25,18 +26,22 @@ const routes: Routes = [
       { path: 'utilisateurs', component: GestionUtilisateursComponent },
       { path: '', redirectTo: 'ateliers/list', pathMatch: 'full' },
       { path: 'ateliers/edit/:id', component: ModifierAtelierComponent },
-      { path: 'utilisateurs/edit/:id', component: ModifierUtilisateurComponent },
+      {
+        path: 'utilisateurs/edit/:id',
+        component: ModifierUtilisateurComponent,
+      },
       { path: 'utilisateurs/add', component: AjouterUtilisateurComponent },
-    ]
+      { path: 'ateliers/:id/participants', component: ParticipantsAtelierComponent }
+    ],
   },
   {
     path: 'admin/gestion-ateliers',
-    component: GestionAtelierComponent
-  }
+    component: GestionAtelierComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

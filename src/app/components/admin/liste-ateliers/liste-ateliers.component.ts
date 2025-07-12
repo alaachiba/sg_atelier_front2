@@ -47,4 +47,8 @@ export class ListeAteliersComponent implements OnInit {
   onEdit(id: number) {
     this.router.navigate(['/admin/ateliers/edit', id]);
   }
+
+  voirParticipants(id: number) {
+    this.router.navigate([`/admin/ateliers/${id}/participants`]);
+  }
 }

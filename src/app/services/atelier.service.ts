@@ -91,5 +91,23 @@ export class AtelierService {
       }
     });
   }
+
+  getParticipants(atelierId: number): Observable<any[]> {
+    const token = localStorage.getItem('token');
+    return this.http.get<any[]>(`http://localhost:8000/api/ateliers/${atelierId}/participants`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  getParticipantsByAtelier(atelierId: number): Observable<any[]> {
+    const token = localStorage.getItem('token');
+    return this.http.get<any[]>(`http://localhost:8000/api/ateliers/${atelierId}/participants`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
  
 }

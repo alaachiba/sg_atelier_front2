@@ -25,6 +25,7 @@
       <td>{{ atelier.lieu }}</td>
       <td>{{ atelier.formateur?.nom }} {{ atelier.formateur?.prenom }}</td>
       <td>
+        <button class="btn btn-sm btn-info" (click)="voirParticipants(atelier.id)">👥 Voir Participants</button>
         <button class="btn btn-sm btn-warning me-2" (click)="onEdit(atelier.id)">✏️ Modifier</button>
         <button class="btn btn-sm btn-danger" (click)="onDelete(atelier.id)">🗑️ Supprimer</button>
       </td>

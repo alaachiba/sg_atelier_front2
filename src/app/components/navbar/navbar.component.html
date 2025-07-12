@@ -24,6 +24,9 @@
             </button>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn()">
+            <span *ngIf="utilisateurNomComplet" class="me-3">
+              👤 {{ utilisateurNomComplet }}
+            </span>
             <button type="button" class="btn btn-danger" (click)="logout()">
               Déconnexion
             </button>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,9 +11,10 @@ declare var bootstrap: any;
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string | null = null;
+  utilisateurNomComplet: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -27,10 +28,34 @@ export class NavbarComponent {
     });
   }
 
+  ngOnInit(): void {
+    if (this.isLoggedIn()) {
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        this.utilisateurNomComplet = `${user.nom} ${user.prenom}`;
+      } else {
+        this.chargerNomUtilisateur();
+      }
+    }
+  }
+
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-  logout() {
+
+  chargerNomUtilisateur(): void {
+    this.authService.getUtilisateurConnecte().subscribe({
+      next: (user) => {
+        this.utilisateurNomComplet = `${user.nom} ${user.prenom}`;
+      },
+      error: (err) => {
+        console.error("Erreur récupération de l'utilisateur :", err);
+      }
+    });
+  }
+
+  logout(): void {
     this.authService.logoutAndRedirect();
   }
 
@@ -42,23 +67,21 @@ export class NavbarComponent {
 
     this.http.post('http://localhost:8000/api/login', loginData).subscribe({
       next: (response: any) => {
-        console.log('Connexion réussie', response);
-
-        // ✅ Stocker token et infos utilisateur
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
 
-        // ✅ Fermer la modale
+        // Fermer la modale Bootstrap
         const modalElement = document.getElementById('loginModal');
         if (modalElement) {
-          // @ts-ignore
           const modal =
             bootstrap.Modal.getInstance(modalElement) ||
             new bootstrap.Modal(modalElement);
           modal.hide();
         }
 
-        // ✅ Redirection vers dashboard selon rôle
+        this.chargerNomUtilisateur();
+
+        // Redirection selon le rôle
         const role = response.user.role;
         if (role === 'admin') {
           this.router.navigate(['/admin']);

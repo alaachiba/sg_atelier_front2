@@ -18,6 +18,7 @@ import { ListeAteliersComponent } from './components/admin/liste-ateliers/liste-
 import { ModifierAtelierComponent } from './components/admin/modifier-atelier/modifier-atelier.component';
 import { ModifierUtilisateurComponent } from './components/admin/modifier-utilisateur/modifier-utilisateur.component';
 import { AjouterUtilisateurComponent } from './components/admin/ajouter-utilisateur/ajouter-utilisateur.component';
+import { ParticipantsAtelierComponent } from './components/admin/participants-atelier/participants-atelier.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AjouterUtilisateurComponent } from './components/admin/ajouter-utilisat
     ListeAteliersComponent,
     ModifierAtelierComponent,
     ModifierUtilisateurComponent,
-    AjouterUtilisateurComponent
+    AjouterUtilisateurComponent,
+    ParticipantsAtelierComponent
   ],
   imports: [
     BrowserModule,
