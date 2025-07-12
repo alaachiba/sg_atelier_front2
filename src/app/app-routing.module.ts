@@ -4,12 +4,28 @@ import { AtelierListComponent } from './components/atelier-list/atelier-list.com
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { FormateurDashboardComponent } from './pages/formateur-dashboard/formateur-dashboard.component';
 import { ParticipantDashboardComponent } from './pages/participant-dashboard/participant-dashboard.component';
+import { GestionUtilisateursComponent } from './components/gestion-utilisateurs/gestion-utilisateurs.component';
+import { GestionAtelierComponent } from './components/admin/gestion-atelier/gestion-atelier.component';
 
 const routes: Routes = [
   { path: '', component: AtelierListComponent },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'formateur', component: FormateurDashboardComponent },
   { path: 'participant', component: ParticipantDashboardComponent },
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    children: [
+      { path: 'ateliers/add', component: GestionAtelierComponent },
+      // { path: 'ateliers/list', component: ListeAteliersComponent },
+      { path: 'utilisateurs', component: GestionUtilisateursComponent },
+      { path: '', redirectTo: 'ateliers/list', pathMatch: 'full' }
+    ]
+  },
+  {
+    path: 'admin/gestion-ateliers',
+    component: GestionAtelierComponent
+  }
 ];
 
 @NgModule({

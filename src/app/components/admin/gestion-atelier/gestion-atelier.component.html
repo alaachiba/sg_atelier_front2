@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h3>Créer un nouvel atelier</h3>
+  
+    <form [formGroup]="atelierForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" class="form-control" formControlName="titre" id="titre">
+      </div>
+  
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" formControlName="description" id="description"></textarea>
+      </div>
+  
+      <div class="mb-3">
+        <label for="date_debut" class="form-label">Date de début</label>
+        <input type="date" class="form-control" formControlName="date_debut" id="date_debut">
+      </div>
+  
+      <div class="mb-3">
+        <label for="date_fin" class="form-label">Date de fin</label>
+        <input type="date" class="form-control" formControlName="date_fin" id="date_fin">
+      </div>
+  
+      <div class="mb-3">
+        <label for="lieu" class="form-label">Lieu</label>
+        <input type="text" class="form-control" formControlName="lieu" id="lieu">
+      </div>
+  
+      <div class="mb-3">
+        <label for="formateur_id" class="form-label">Formateur</label>
+        <select class="form-select" formControlName="formateur_id" id="formateur_id">
+          <option value="">-- Choisir un formateur --</option>
+          <option *ngFor="let f of formateurs" [value]="f.id">
+            {{ f.nom }} {{ f.prenom }}
+          </option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="atelierForm.invalid">Créer l'atelier</button>
+    </form>
+  
+    <div class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="alert alert-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+  
