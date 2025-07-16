@@ -33,8 +33,8 @@ Frontend Angular pour gérer des ateliers de formation avec gestion des utilisat
 ## 🚀 Installation
 
 ```bash
-git clone <URL_DU_DEPOT>
-cd nom-du-projet-frontend
+git clone (https://github.com/alaachiba/sg_atelier_front2.git)
+cd gestion-ateliers-frontend
 npm install
 ng serve --open
 ```
